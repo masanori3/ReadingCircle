@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-xs-offset-3 col-xs-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">ユーザ登録</div>
+      <div class="panel-body">
+        <%= form_for(@user) do |f| %>
+          <div class="form-group">
+            <%= f.label :name, "ユーザ名（氏名）" %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email, "メールアドレス" %>
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, "パスワード" %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password_confirmation, "パスワード（確認）" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+          </div>
+          
+          <% #チェックボックスを入れるところ %>
+          
+          
+          <% #ここまでチェックボックス %>
+          
+          <div class="form-group">
+            <%= f.label :content, "プロフィール文（任意）" %>
+            <%= f.text_area :content, class: "form-control", size: "24x10" %>
+          </div>
+          
+          <div class="text-center">
+            <%= f.submit "登録する", class: "btn btn-primary" %>
+          </div>
+        <% end %>  
+      </div>
+    </div>
+    
+  </div>
+</div>
