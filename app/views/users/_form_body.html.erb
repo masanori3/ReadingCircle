@@ -1,0 +1,51 @@
+
+      <div class="panel-body">
+        <%= form_for(user) do |f| %>
+          <div class="form-group">
+            <%= f.label :name, "ユーザ名（氏名）" %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email, "メールアドレス" %>
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, "パスワード" %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password_confirmation, "パスワード（確認）" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+          </div>
+          
+          <% #チェックボックスを入れるところ %>
+          
+          
+          <% #ここまでチェックボックス %>
+          
+          <div class="form-group">
+            <%= f.label :content, "プロフィール文（任意）" %>
+            <%= f.text_area :content, class: "form-control", size: "24x10" %>
+          </div>
+          
+
+          <div>
+            <%= f.label :image, "ユーザ画像" %>
+            <%= image_tag @user.image.thumb.url if @user.image? %>
+            <%= f.file_field :image %>
+            <%= f.hidden_field :image_cache %>
+          </div>
+          
+          
+          <!-- ログインしていないとき、つまり新規登録のときは「登録する」、
+          ログインしているときは「更新する」と表示するように分岐させる -->
+          
+          <div class="text-center">
+            <%= f.submit "登録する", class: "btn btn-primary" %>
+          </div>
+          
+          
+        <% end %>  
+      </div>
+    </div>
+  
