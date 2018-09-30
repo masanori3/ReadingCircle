@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_user_logged_in, only: [:show]
+  
 
   
-  def index
-  end
+  
 
   def show
   end

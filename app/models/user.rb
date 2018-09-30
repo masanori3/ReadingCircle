@@ -7,4 +7,8 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
                     
   mount_uploader :image, ImageUploader
+  
+  has_many :circles
+  
+  
 end

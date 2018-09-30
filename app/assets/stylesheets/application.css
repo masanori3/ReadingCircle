@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+
+.search{
+  margin-bottom: 20px;
+}
+
+.book .panel-body{
+  height: 70px;
+}
+
+.book .panel-heading{
+  height: 250px;
+}
+
+.book .panel-heading img{
+  height: 100%;
+  max-width: 100%;
+}
+
+p.book-title{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
