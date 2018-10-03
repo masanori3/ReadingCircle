@@ -12,7 +12,10 @@
             <div class="panel-body">
               <p class="book-title"><%= book.name %></p>
               <div class="button text-center">
-                <%=# render "do_button", %>
+                <%= form_tag(new_circle_path, method: :get) do %>
+                  <%= hidden_field_tag :book_code, book.code %>
+                  <%= submit_tag "この本で読書会をする", class: "btn btn-primary" %>
+                <% end %>
               </div>
             </div>
             
