@@ -36,7 +36,7 @@ class BooksController < ApplicationController
       
     end
     
-    redirect_to new_circle_path
+    redirect_to new_circle_path(book_id: @book.id)
   end
   
   
