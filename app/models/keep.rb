@@ -1,0 +1,2 @@
+class Keep < CirclesUser
+end

@@ -1,0 +1,28 @@
+<% if circles %>
+  <div class="row">
+    <% circles.each do |circle| %>
+      <div class="circle">
+        <div class="col-md-6 col-sm-12">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <%= link_to image_tag(circle.book.image_url), circle %>
+              <!--<img src="<%#= circle.book.image_url %>" alt="">-->
+            </div>
+            <div class="panel-body">
+              <p class="circle-title"><%= link_to circle.title, circle %></p>
+              <p class="use-book-title">使用する本 : <%= circle.book.name %></p>
+              <div class="buttons text-center">
+                <% if logged_in? %>
+                  <% unless current_user.id == circle.user.id %>
+                    <%= render "circles_users/keep_button", circle: circle %>
+                    <%= render "circles_users/entry_button", circle: circle %>
+                  <% end  %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

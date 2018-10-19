@@ -26,8 +26,19 @@
 .book .panel-heading{
   height: 250px;
 }
+.circle .panel-heading{
+  height: 250px;
+}
+/*.circle-show .panel-heading{
+  height: 300px;
+}
+*/
 
 .book .panel-heading img{
+  height: 100%;
+  max-width: 100%;
+}
+.circle .panel-heading img{
   height: 100%;
   max-width: 100%;
 }
@@ -37,4 +48,8 @@ p.book-title{
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+}
+
+p.use-book-title{
+  
 }

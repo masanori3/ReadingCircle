@@ -2,6 +2,11 @@ class Circle < ApplicationRecord
   belongs_to :user
   belongs_to :book
   
+  has_many :circles_users
+  has_many :users, through: :circles_users
+  
+  has_many :keeps
+  has_many :keep_users, through: :keeps, source: :user
   
   
   #validates :user_id, presence: true

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_user_logged_in, only: [:show]
+  before_action :require_user_logged_in, only: [:show, :keeps, :entries]
   
 
   
@@ -42,6 +42,16 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:success] = "退会しました"
     redirect_to root_path
+  end
+  
+  def keeps
+    @user = current_user
+    @keeps = @user.keep_circles
+  end
+  
+  def entries
+    @user = current_user
+    @entries = @user.entry_circles
   end
   
   private

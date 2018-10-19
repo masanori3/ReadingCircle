@@ -1,2 +1,56 @@
-<h1>Circles#show</h1>
-<p>Find me in app/views/circles/show.html.erb</p>
+<div class="row">
+  <div class="col-xs-offset-3 col-xs-6">
+    <div class="circle">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <h4>読書会名 : <%= @circle.title %></h4>
+          <img src="<%= @book.image_url %>" alt="">
+        </div>
+        <div class="panel-body">
+          <!--<div>開催方法 : <%#= @attend_circle %></div>-->
+          <h4>使用する本 : <%= @circle.book.name%></h4>
+          <div>開催手法・場所</div>
+            <% if @circle.attend == 0 %>
+              <div>オンライン : 
+                <% unless @circle.online == 3 %>
+                  <%= @online_circle %>
+                <% else %>
+                  <%= @circle.online_detail %>
+                <% end %>
+              </div>
+            <% elsif @circle.attend == 1 %>
+              <div>オフライン : <%= @circle.offline_detail %></div>
+            <% else %>
+              <div>オンライン : 
+                <% unless @circle.online == 3 %>
+                  <%= @online_circle %>
+                <% else %>
+                  <%= @circle.online_detail %>
+                <% end %>
+              </div>
+              <div>オフライン : <%= @circle.offline_detail %></div>
+              
+            <% end %>
+          <div>開催日時 : <%= @circle.reserved_at %></div>
+          <p>定員 : <%= @circle.capacity %> 人</p>
+          <div>
+            <div>詳細</div>
+            <div class="text-center"><%= @circle.content %></div>
+          </div>
+          
+        </div>
+        <div class="panel-footer">
+          <div class="buttons">
+            <% if logged_in? && (current_user != @circle.user) %>
+              <%= render "circles_users/keep_button", circle: @circle %>
+              <%= render "circles_users/entry_button", circle: @circle %>
+            <% end %>  
+            <% unless logged_in? %>
+              <p>参加するには<%= link_to "ログイン", login_path %>が必要です。</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>

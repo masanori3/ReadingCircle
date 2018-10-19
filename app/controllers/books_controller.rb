@@ -1,8 +1,10 @@
 class BooksController < ApplicationController
   before_action :require_user_logged_in
   
+  
   def new
-    
+    #「ランラン」「にう」と検索すると、なぜかエラーを吐く。
+    #URLが無効だからnilになるのではない。
     @books = []
     
     @keyword = params[:keyword]
@@ -10,13 +12,17 @@ class BooksController < ApplicationController
       results = RakutenWebService::Ichiba::Item.search({
         keyword: @keyword,
         genreId: 200162,
-        hits: 20
+        hits: 20,
+        imageFlag: 1
       })
-        
+      
+      
+
       results.each do |result|
         book = Book.find_or_initialize_by(read(result))
         @books << book
       end
+      
     end
   end  
   
@@ -31,6 +37,7 @@ class BooksController < ApplicationController
     unless @book.persisted?
       results = RakutenWebService::Ichiba::Item.search(itemCode: @book.code)
       
+      
       @book = Book.new(read(results.first))
       @book.save
       
@@ -38,12 +45,21 @@ class BooksController < ApplicationController
     
     redirect_to new_circle_path(book_id: @book.id)
   end
-  
-  
-  
-  
- 
-  
-  
-  
+
+=begin  
+  def read(result)
+    code = result['itemCode']
+    name = result["itemName"]
+    url = result["itemUrl"]
+    image_url = result["mediumImageUrls"].first["imageUrl"].gsub("?_ex=128x128", "") unless url_request("mediumImageUrls")
+    
+    {
+      code: code,
+      name: name,
+      url: url,
+      image_url: image_url
+    }
+  end
+=end
+
 end

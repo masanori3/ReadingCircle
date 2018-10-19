@@ -1,0 +1,2 @@
+class Entry < CirclesUser
+end

@@ -36,11 +36,11 @@
               
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="#">キープした読書会</a>
+                    <%= link_to "キープした読書会", keeps_user_path(current_user) %>
                   </li>
                   <li role="separator" class="divider"></li>
                   <li>
-                    <a href="#">参加した読書会</a>
+                    <%= link_to "参加予定の読書会", entries_user_path(current_user) %>
                   </li>
                   <li role="separator" class="divider"></li>
                   <li>

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     
     if login(email, password)
       flash[:success] = "ログインしました"
-      redirect_to @user #あとで読書会一覧ページに飛ばすようにする
+      redirect_to root_path
     else
       flash[:danger] = "ログインできませんでした"
       render :new

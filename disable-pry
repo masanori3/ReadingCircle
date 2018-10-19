@@ -1,0 +1,25 @@
+
+[1mFrom:[0m /home/ec2-user/environment/reading-circle/app/controllers/books_controller.rb @ line 18 BooksController#new:
+
+     [1;34m4[0m: [32mdef[0m [1;34mnew[0m
+     [1;34m5[0m:   [1;34m#「ランラン」と検索すると、なぜかエラーを吐く。[0m
+     [1;34m6[0m:   @books = []
+     [1;34m7[0m: 
+     [1;34m8[0m:   @keyword = params[[33m:keyword[0m]
+     [1;34m9[0m:   [32mif[0m @keyword.present?
+    [1;34m10[0m:     results = [1;34;4mRakutenWebService[0m::[1;34;4mIchiba[0m::[1;34;4mItem[0m.search({
+    [1;34m11[0m:       [35mkeyword[0m: @keyword,
+    [1;34m12[0m:       [35mgenreId[0m: [1;34m200162[0m,
+    [1;34m13[0m:       [35mhits[0m: [1;34m20[0m
+    [1;34m14[0m:     })
+    [1;34m15[0m:     
+    [1;34m16[0m:     binding.pry
+    [1;34m17[0m: 
+ => [1;34m18[0m:     results.each [32mdo[0m |result|
+    [1;34m19[0m:       book = [1;34;4mBook[0m.find_or_initialize_by(read(result))
+    [1;34m20[0m:       @books << book
+    [1;34m21[0m:     [32mend[0m
+    [1;34m22[0m:     
+    [1;34m23[0m:   [32mend[0m
+    [1;34m24[0m: [32mend[0m  
+

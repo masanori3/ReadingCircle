@@ -1,16 +1,23 @@
 class CirclesController < ApplicationController
-  before_action :require_user_logged_in
+  before_action :require_user_logged_in, only: [:new, :create]
   
   
   def index
   end
 
   def show
+    @circle = Circle.find(params[:id])
+    @book = Book.find_by(id: @circle.book_id)
+    attend_number = ["オンライン", "オフライン", "どちらも可"]
+    @attend_circle = attend_number[@circle.attend.to_i]
+    online_number = ["Skype", "Zoom", "apper.in"]
+    @online_circle = online_number[@circle.online.to_i]
   end
 
   def new
     
     if logged_in?
+      
       @book = Book.find_or_initialize_by(code: params[:book_code])
       
       unless @book.persisted?
@@ -19,18 +26,19 @@ class CirclesController < ApplicationController
         @book.save!
       end
       
-      @book_circle = current_user.circles.build(book_id: @book.id)
+      @book_circle = current_user.circles.build(book_id: @book.id, user_id: current_user.id)
     end 
   end
   
   def create
-    @book_circle = current_user.circles.build(new_circle)
-    if @book_circle.save
+    #binding.pry
+    @book_circle = Circle.new(new_circle)
+    if @book_circle.save!
       flash[:success] = "読書会を作成しました。"
-      redirect_to root_path
+      redirect_to @book_circle
     else
       flash[:danger] = "読書会を作成できませんでした。"
-      render :new
+      redirect_to new_book_path 
     end
   end
   
@@ -41,6 +49,6 @@ class CirclesController < ApplicationController
   end
   
   def new_circle
-    params.require(:circle).permit(:title, :attend, :online, :online_detail, :offline_detail, :capacity, :minutes, :content, :book_id)
+    params.require(:circle).permit(:title, :attend, :online, :online_detail, :offline_detail, :capacity, :minutes, :reserved_at, :content, :book_id, :user_id)
   end
 end

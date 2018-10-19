@@ -1,0 +1,14 @@
+<% if current_user.keep?(circle) %>
+  <%= form_tag(circles_user_path(circle.id), method: :delete) do %>
+    <%= hidden_field_tag :circle_id, circle.id %>
+    <%= hidden_field_tag :type, "Keep" %>
+    <%= submit_tag "キープを解除する", class: "btn btn-danger" %>
+  <% end %>
+<% else %>
+  <%= form_tag(circles_users_path) do %>
+    <%= hidden_field_tag :circle_id, circle.id %>
+    <%= hidden_field_tag :type, "Keep" %>
+    <%= submit_tag "キープする", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+  

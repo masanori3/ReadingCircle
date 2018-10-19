@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-xs-offset-3 col-xs-6">
     <div class="panel panel-default">
@@ -16,19 +17,19 @@
           <div>
             <h4>開催方法</h4>
           </div>
-          <label><%= f.radio_button :attend, 1 %>オンライン</label>
-          <label><%= f.radio_button :attend, 2 %>オフライン</label>
-          <label><%= f.radio_button :attend, 3 %>どちらも可</label>
+          <label><%= f.radio_button :attend, 0 %>オンライン</label>
+          <label><%= f.radio_button :attend, 1 %>オフライン</label>
+          <label><%= f.radio_button :attend, 2 %>どちらも可</label>
           <div>
             <h4>開催手法・場所</h4>
           </div>
           <div>
             <P>オンライン</P>
           </div>
-          <label><%= f.radio_button :online, 1 %>Skype</label>
-          <label><%= f.radio_button :online, 2 %>Zoom</label>
-          <label><%= f.radio_button :online, 3 %>apper.in</label>
-          <label><%= f.radio_button :online, 4 %>その他</label>
+          <label><%= f.radio_button :online, 0 %>Skype</label>
+          <label><%= f.radio_button :online, 1 %>Zoom</label>
+          <label><%= f.radio_button :online, 2 %>apper.in</label>
+          <label><%= f.radio_button :online, 3 %>その他</label>
           <div class="form-group">
             <%= f.label :online_detail, "「その他」の場合はオンライン開催でつかうツール名を入力" %>
             <%= f.text_field :online_detail, class: "form-control" %> 
@@ -47,16 +48,16 @@
           <div>
             <P>定員（主催者含めて）</P>
           </div>
-          <%= f.select :capacity, ["2", "3", "4人", "5", "6", "7~10"], { include_blank: "選択してください" } %>
+          <%= f.select :capacity, [2, 3], { include_blank: "選択してください" } %>
           
           
           <div>
             <p>時間</p>
           </div>
-          <label><%= f.radio_button :minutes, 1 %>30分</label>
-          <label><%= f.radio_button :minutes, 2 %>60分</label>
-          <label><%= f.radio_button :minutes, 3 %>90分</label>
-          <label><%= f.radio_button :minutes, 4 %>120分</label>
+          <label><%= f.radio_button :minutes, 0 %>30分</label>
+          <label><%= f.radio_button :minutes, 1 %>60分</label>
+          <label><%= f.radio_button :minutes, 2 %>90分</label>
+          <label><%= f.radio_button :minutes, 3 %>120分</label>
           
           <div class="form-group">
             <%= f.label :content, "どのような読書会にしたいか（詳細）" %>
@@ -64,6 +65,7 @@
           </div>
           
           <%= f.hidden_field :book_id %>
+          <%= f.hidden_field :user_id %>
           <%= f.submit "この内容で読書会を作成する", class: "btn btn-success" %>
         <% end %>
 

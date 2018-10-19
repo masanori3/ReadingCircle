@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181001233514) do
+ActiveRecord::Schema.define(version: 20181015225728) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "code"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20181001233514) do
     t.index ["user_id"], name: "index_circles_on_user_id", using: :btree
   end
 
+  create_table "circles_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "type"
+    t.integer  "user_id"
+    t.integer  "circle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["circle_id"], name: "index_circles_users_on_circle_id", using: :btree
+    t.index ["user_id", "circle_id"], name: "index_circles_users_on_user_id_and_circle_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_circles_users_on_user_id", using: :btree
+  end
+
   create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "check_box_name"
     t.datetime "created_at",     null: false
@@ -61,4 +72,6 @@ ActiveRecord::Schema.define(version: 20181001233514) do
 
   add_foreign_key "circles", "books"
   add_foreign_key "circles", "users"
+  add_foreign_key "circles_users", "circles"
+  add_foreign_key "circles_users", "users"
 end
