@@ -8,10 +8,14 @@ class CirclesController < ApplicationController
   def show
     @circle = Circle.find(params[:id])
     @book = Book.find_by(id: @circle.book_id)
+    @capacity = @circle.capacity - @circle.keep_users.count
+
     attend_number = ["オンライン", "オフライン", "どちらも可"]
     @attend_circle = attend_number[@circle.attend.to_i]
     online_number = ["Skype", "Zoom", "apper.in"]
     @online_circle = online_number[@circle.online.to_i]
+
+
   end
 
   def new

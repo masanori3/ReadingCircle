@@ -23,24 +23,35 @@
   height: 70px;
 }
 
-.book .panel-heading{
+.book-marker{
   height: 250px;
 }
-.circle .panel-heading{
-  height: 250px;
-}
+
 /*.circle-show .panel-heading{
   height: 300px;
 }
 */
 
-.book .panel-heading img{
+.book-marker img{
   height: 100%;
   max-width: 100%;
 }
+.circle .panel-heading, .circle-index .panel-heading{
+  height: 250px;
+}
 .circle .panel-heading img{
+  height: 80%;
+  max-width: 100%;
+}
+.circle-index .panel-heading img{
   height: 100%;
   max-width: 100%;
+}
+
+
+.circle .panel-heading p{
+  font-weight: bold;
+  color: blue;
 }
 
 p.book-title{
@@ -50,6 +61,12 @@ p.book-title{
   overflow: hidden;
 }
 
-p.use-book-title{
-  
+
+
+.circle-index p{
+  font-weight: bold; 
+}
+
+.border{
+  border-bottom: solid silver;
 }

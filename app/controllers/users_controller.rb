@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   
 
   def show
+    @created_circle = @user.created_circles
   end
 
   def new

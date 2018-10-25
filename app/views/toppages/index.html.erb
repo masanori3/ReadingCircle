@@ -6,9 +6,10 @@
     <div class="center jumbotron">
         <div class="text-center">
             <h1>Let's Reading Circle!</h1>
+            <p><%= link_to "新規登録", new_user_path %>して読書会を作成、または参加しましょう！</p>
         </div>
         
     </div>
 <% end %>    
     
-    <%= render "circles/circles", circles: @circles %>
+    <%= render "circles/circles", circles: @search_circles %>

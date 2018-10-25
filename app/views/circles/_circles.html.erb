@@ -1,16 +1,61 @@
 <% if circles %>
   <div class="row">
     <% circles.each do |circle| %>
-      <div class="circle">
+      <div class="circle-index">
         <div class="col-md-6 col-sm-12">
           <div class="panel panel-default">
             <div class="panel-heading text-center">
-              <%= link_to image_tag(circle.book.image_url), circle %>
+              <%= link_to image_tag(circle.book.image_url), circle_path(circle) %>
               <!--<img src="<%#= circle.book.image_url %>" alt="">-->
             </div>
-            <div class="panel-body">
-              <p class="circle-title"><%= link_to circle.title, circle %></p>
-              <p class="use-book-title">使用する本 : <%= circle.book.name %></p>
+            <div class="panel-body circle-index">
+              <p class="circle-title">読書会名</p>
+              <div><%= link_to circle.title, circle %></div>
+              <p class="use-book-title">使用する本</p>
+              <div><%= circle.book.name %></div>
+              <p>主催者</p>
+              <div><%= link_to circle.user.name, user_path(circle.user) %></div>
+              <p>【開催手法・場所】</p>
+              <% if circle.attend == 0 %>
+                <p>オンライン</p>
+                <div>
+                  <% unless circle.online == 3 %>
+                    <%= online_number(circle) %>
+                  <% else %>
+                    <%= circle.online_detail %>
+                  <% end %>
+                </div>
+              <% elsif circle.attend == 1 %>
+                <p>オフライン</p>
+                <div>
+                  <%= circle.offline_detail %>
+                </div>
+              <% else %>
+                <p>オンライン</p>
+                <div> 
+                  <% unless circle.online == 3 %>
+                    <%= online_number(circle) %>
+                  <% else %>
+                    <%= circle.online_detail %>
+                  <% end %>
+                </div>
+                <p>オフライン</p> 
+                <div>
+                  <%= circle.offline_detail %>
+                </div>
+                
+              <% end %>
+              <p>開催日時</p>
+              <div>
+                <%= circle.reserved_at %>
+              </div>
+              <p>所要時間</p>
+              <div>
+                <%= circle_number(circle) %>
+              </div>
+              
+              <p>定員</p>
+              <div><%= circle.capacity %>人</div>
               <div class="buttons text-center">
                 <% if logged_in? %>
                   <% unless current_user.id == circle.user.id %>

@@ -59,3 +59,4 @@ gem 'pry-byebug', group: :development
 gem 'rakuten_web_service', '1.5.0'
 gem 'dotenv-rails'
 gem 'rubocop', require: false
+gem 'ransack'
