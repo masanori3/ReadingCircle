@@ -59,7 +59,7 @@
               <div class="buttons text-center">
                 <% if logged_in? %>
                   <% unless current_user.id == circle.user.id %>
-                    <%= render "circles_users/keep_button", circle: circle %>
+                    <%= render "circles_users/keep_button", circle: circle, class: "keep-button" %>
                     <%= render "circles_users/entry_button", circle: circle %>
                   <% end  %>
                 <% end %>

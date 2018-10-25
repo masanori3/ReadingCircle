@@ -11,6 +11,7 @@
             
             <div class="panel-body">
               <p class="book-title"><%= book.name %></p>
+            
               <div class="button text-center">
                 <%= form_tag(new_circle_path, method: :get) do %>
                   <%= hidden_field_tag :book_code, book.code %>

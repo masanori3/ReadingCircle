@@ -20,8 +20,9 @@
 }
 
 .book .panel-body{
-  height: 70px;
+  height: 100px;
 }
+
 
 .book-marker{
   height: 250px;
@@ -36,14 +37,14 @@
   height: 100%;
   max-width: 100%;
 }
-.circle .panel-heading, .circle-index .panel-heading{
+.circle .panel-heading, .circle-index .panel-heading, .book .panel-heading{
   height: 250px;
 }
 .circle .panel-heading img{
   height: 80%;
   max-width: 100%;
 }
-.circle-index .panel-heading img{
+.book .panel-heading img, .circle-index .panel-heading img{
   height: 100%;
   max-width: 100%;
 }
@@ -69,4 +70,8 @@ p.book-title{
 
 .border{
   border-bottom: solid silver;
+}
+
+.keep-button{
+  margin-bottom: 12px;
 }

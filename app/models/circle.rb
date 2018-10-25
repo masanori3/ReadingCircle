@@ -8,6 +8,9 @@ class Circle < ApplicationRecord
   has_many :keeps
   has_many :keep_users, through: :keeps, source: :user
   
+  has_many :entries
+  has_many :entry_users, through: :entries, source: :user
+  
   
   #validates :user_id, presence: true
   #validates :book_id, presence: true
