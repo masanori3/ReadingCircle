@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181015225728) do
+ActiveRecord::Schema.define(version: 20181026092724) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "code"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 20181015225728) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "microposts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "circle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["circle_id"], name: "index_microposts_on_circle_id", using: :btree
+    t.index ["user_id"], name: "index_microposts_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "email"
@@ -74,4 +84,6 @@ ActiveRecord::Schema.define(version: 20181015225728) do
   add_foreign_key "circles", "users"
   add_foreign_key "circles_users", "circles"
   add_foreign_key "circles_users", "users"
+  add_foreign_key "microposts", "circles"
+  add_foreign_key "microposts", "users"
 end

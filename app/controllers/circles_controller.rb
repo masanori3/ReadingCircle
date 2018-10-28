@@ -9,11 +9,17 @@ class CirclesController < ApplicationController
     @circle = Circle.find(params[:id])
     @book = Book.find_by(id: @circle.book_id)
     @capacity = @circle.capacity - @circle.entry_users.count
-
+    #無理ならばMicropost.new(circle_id: @circle.id, user_id: current_user.id)としろ
+    @micropost = current_user.microposts.build(circle_id: @circle.id) if current_user
+    @microposts = @circle.microposts.order('created_at DESC')
+=begin
     attend_number = ["オンライン", "オフライン", "どちらも可"]
     @attend_circle = attend_number[@circle.attend.to_i]
     online_number = ["Skype", "Zoom", "apper.in"]
     @online_circle = online_number[@circle.online.to_i]
+=end
+
+    
 
 
   end
@@ -37,7 +43,7 @@ class CirclesController < ApplicationController
   def create
     #binding.pry
     @book_circle = Circle.new(new_circle)
-    if @book_circle.save!
+    if @book_circle.save
       flash[:success] = "読書会を作成しました。"
       redirect_to @book_circle
     else

@@ -15,13 +15,13 @@
              <%= f.text_field :title, class: "form-control" %>
           </div>
           <div>
-            <h4>開催方法</h4>
+            <h4>開催方法（必須）</h4>
           </div>
           <label><%= f.radio_button :attend, 0 %>オンライン</label>
           <label><%= f.radio_button :attend, 1 %>オフライン</label>
           <label><%= f.radio_button :attend, 2 %>どちらも可</label>
           <div>
-            <h4>開催手法・場所</h4>
+            <h4>開催手法・場所（必須）</h4>
           </div>
           <div>
             <P>オンライン</P>
@@ -42,17 +42,17 @@
             <%= f.text_field :offline_detail, class: "form-control" %>
           </div>
           <div>
-            <p>開催日時</p>
+            <p>開催日時（必須）</p>
           </div>
           <%= f.datetime_field :reserved_at %>
           <div>
-            <P>定員（主催者含めて）</P>
+            <P>定員（必須・主催者は含めない）</P>
           </div>
-          <%= f.select :capacity, [2, 3], { include_blank: "選択してください" } %>
+          <%= f.select :capacity, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], { include_blank: "選択してください" } %>
           
           
           <div>
-            <p>時間</p>
+            <p>時間（必須）</p>
           </div>
           <label><%= f.radio_button :minutes, 0 %>30分</label>
           <label><%= f.radio_button :minutes, 1 %>60分</label>

@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   resources :books, only: [:new, :create]
   resources :circles
   resources :circles_users, only: [:create, :destroy]
+  resources :microposts, only: [:create]
 end

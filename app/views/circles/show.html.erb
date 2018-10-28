@@ -61,7 +61,7 @@
           </div>
           <div>
             <div>詳細</div>
-            <div class="text-center"><%= @circle.content %></div>
+            <div><%= @circle.content %></div>
           </div>
           
         </div>
@@ -82,6 +82,23 @@
             <% end %>
           </div>
         </div>
+      </div>
+      <h4>この読書会の掲示板</h4>
+      <div class="microposts">
+        <%= render "microposts/microposts", microposts: @microposts %>
+      </div>
+      <div class="micropost-form">
+        <% if logged_in? %>
+          <%= form_for(@micropost) do |f| %>
+            <div class="form-group">
+              <%= f.text_area :content, class: "form-control", rows: 5 %>
+            </div>
+            <%= f.hidden_field :circle_id %>
+            <%= f.submit "メッセージを投稿する", class: "btn btn-primary" %>
+          <% end %>
+        <% else %>
+          <p>投稿するには<%= link_to "ログイン", login_path %>が必要です。</p>
+        <% end %>
       </div>
     </div>  
   </div>

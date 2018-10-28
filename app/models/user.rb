@@ -8,6 +8,7 @@ class User < ApplicationRecord
                     
   mount_uploader :image, ImageUploader
   
+  has_many :microposts
   has_many :created_circles, class_name: "Circle"
   has_many :circles_users
   has_many :circles, through: :circles_users

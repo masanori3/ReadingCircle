@@ -28,14 +28,14 @@
             <%= f.text_area :content, class: "form-control", size: "24x10" %>
           </div>
           
-
+          <!--
           <div>
-            <%= f.label :image, "ユーザ画像" %>
-            <%= image_tag @user.image.thumb.url if @user.image? %>
-            <%= f.file_field :image %>
-            <%= f.hidden_field :image_cache %>
+            <%#= f.label :image, "ユーザ画像" %>
+            <%#= image_tag @user.image.thumb.url if @user.image? %>
+            <%#= f.file_field :image %>
+            <%#= f.hidden_field :image_cache %>
           </div>
-          
+          -->
           
           <!-- ログインしていないとき、つまり新規登録のときは「登録する」、
           ログインしているときは「更新する」と表示するように分岐させる -->
