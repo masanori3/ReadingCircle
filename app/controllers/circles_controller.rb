@@ -8,7 +8,7 @@ class CirclesController < ApplicationController
   def show
     @circle = Circle.find(params[:id])
     @book = Book.find_by(id: @circle.book_id)
-    @capacity = @circle.capacity - @circle.entry_users.count
+    @capacity = @circle.capacity.to_i - @circle.entry_users.count.to_i
     #無理ならばMicropost.new(circle_id: @circle.id, user_id: current_user.id)としろ
     @micropost = current_user.microposts.build(circle_id: @circle.id) if current_user
     @microposts = @circle.microposts.order('created_at DESC')
